@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:pertemuan4_timer_menubar/about_screen.dart';
 import 'package:pertemuan4_timer_menubar/stopwatch_screen.dart';
-import 'package:pertemuan4_timer_menubar/timer_screen.dart';
+import 'package:pertemuan4_timer_menubar/timer_screen_display.dart';
 
 class NavigationBarApp extends StatelessWidget {
   final Function logout;
@@ -15,8 +16,6 @@ class NavigationBarApp extends StatelessWidget {
   }
 }
 
-
-
 class NavigationExample extends StatefulWidget {
   final Function logout;
 
@@ -29,14 +28,16 @@ class NavigationExample extends StatefulWidget {
 class _NavigationExampleState extends State<NavigationExample> {
   int currentPageIndex = 0;
 
+  List<String> appBarTitle = ["Stopwatch", "Timer", "About"];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        title: Text(appBarTitle[currentPageIndex]),
         actions: [
           IconButton(
             onPressed: () {
-              // Call the logout function to log out the user
               widget.logout();
             },
             icon: Icon(Icons.logout),
@@ -77,12 +78,12 @@ class _NavigationExampleState extends State<NavigationExample> {
         Container(
           color: Colors.green,
           alignment: Alignment.center,
-          child: TimerScreen(),
+          child: TimerReel(),
         ),
         Container(
           color: Colors.blue,
           alignment: Alignment.center,
-          child: const Text('Page 3'),
+          child: AboutPage(),
         ),
       ][currentPageIndex],
     );
