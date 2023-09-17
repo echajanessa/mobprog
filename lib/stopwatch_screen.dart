@@ -106,15 +106,6 @@ class _StopWatchState extends State<StopWatch> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Center(
-                child: Text(
-                  'StopWatch',
-                  style: TextStyle(color: Colors.white,
-                    fontSize: 23.0,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
               SizedBox(
                 height: 15.0,
               ),
@@ -185,7 +176,7 @@ class _StopWatchState extends State<StopWatch> {
                   ),
                   SizedBox(width: 8.0),
                   IconButton(
-                    color: Colors.white,
+                    color: Colors.red,
                     onPressed: () {
                       addLaps();
                     },

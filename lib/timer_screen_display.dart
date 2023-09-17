@@ -10,6 +10,7 @@ class TimerReel extends StatefulWidget {
   _TimerReelState createState() => _TimerReelState();
 }
 
+//class tampilan pop-up
 class TimerOverDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -19,7 +20,7 @@ class TimerOverDialog extends StatelessWidget {
       actions: [
         TextButton(
           onPressed: () {
-            Navigator.of(context).pop(); // Close the dialog
+            Navigator.of(context).pop();
           },
           child: Text('OK'),
         ),
@@ -28,6 +29,7 @@ class TimerOverDialog extends StatelessWidget {
   }
 }
 
+//class untuk memunculkan pop-up saat timer berakhir
 class _TimerReelState extends State<TimerReel> {
   late Timer _timer;
   int _start = 30;
@@ -52,6 +54,7 @@ class _TimerReelState extends State<TimerReel> {
     );
   }
 
+  //fungsi pop-up
   void showTimerOverDialog() {
     showDialog(
       context: context,
@@ -84,7 +87,7 @@ class _TimerReelState extends State<TimerReel> {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            SizedBox(
+            SizedBox( //ukuran slider timer
               width: MediaQuery.of(context).size.width * 0.75,
               height: MediaQuery.of(context).size.width * 0.85,
               child: SleekCircularSlider(
@@ -94,7 +97,6 @@ class _TimerReelState extends State<TimerReel> {
                     trackColor: Color(0xFF1C2757),
                     progressBarColor: Colors.deepOrangeAccent,
                     dotColor: Colors.white,
-                    //shadowColor: Colors.grey.shade300,
                   ),
                   startAngle: 270,
                   angleRange: 360,
@@ -138,7 +140,19 @@ class _TimerReelState extends State<TimerReel> {
               ),
             ),
             const SizedBox(
-              height: 50,
+              height: 10,
+            ),
+            Container(
+              child: const Text(
+                  "Drag to set the timer",
+                  style: TextStyle(
+                    fontSize: 18,
+                    color: Colors.deepOrangeAccent,
+                  ),
+              ),
+            ),
+            const SizedBox(
+              height: 16,
             ),
             GestureDetector(
               onTap: () {

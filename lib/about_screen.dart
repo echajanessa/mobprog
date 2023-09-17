@@ -1,5 +1,3 @@
-import 'dart:js_interop';
-
 import 'package:flutter/material.dart';
 
 class AboutPage extends StatefulWidget {
@@ -15,22 +13,25 @@ class AppBanner {
   AppBanner(this.id, this.title, this.imagePath);
 }
 
+//index untuk memunculkan text berbeda pada bgian foto
 List<AppBanner> appBannerList = [
   AppBanner(1, 'FTI', 'assets/FTI UNTAR.png'),
   AppBanner(2, 'Sistem Informasi', 'assets/Logo SI clear.png'),
-  AppBanner(3, 'Student', 'assets/fti.png'),
+  AppBanner(3, 'Student', 'assets/student.jpeg'),
 ];
+
 
 class _AboutPageState extends State<AboutPage> {
   var _selectedIndex = 0;
   final PageController _pageController = PageController(viewportFraction: 0.7);
 
+  //index kalimat pada masing masing slide
   List<String> pageTexts = [
     "Menghasilkan lulusan yang kompeten di bidang teknologi Informasi, berbudi luhur, berwawasan kebangsaan dan menghargai pluralitas.Menghasilkan lulusan di bidang teknologi informasi yang berintegritas, profesional, serta memiliki jiwa entrepreneurial.",
     "Program Studi Sistem Informasi Universitas Tarumanagara memiliki kurikulum yang sesuai dengan standar pendidikan nasional dan juga disesuaikan (link and match) dengan kebutuhan dunia kerja dan industry, serta memiliki tenaga pengajar yang berkualitas dan berpengalaman dengan kualifikasi pendidikan S2 dan S3 dalam dan luar negeri.",
         "Student Name : Janessa Sarah Destini"
         "\nStudent ID        : 825210047"
-        "\nCourse             : Mobile Programming",
+        "\nCourse              : Mobile Programming",
   ];
 
   @override
@@ -63,8 +64,8 @@ class _AboutPageState extends State<AboutPage> {
               itemCount: appBannerList.length,
               itemBuilder: (context, index) {
                 var banner = appBannerList[index];
-                var _scale = _selectedIndex == index ? 1.0 : 0.8;
-
+                var _scale = _selectedIndex == index ? 1.0 : 0.8; //ukuran gambar, kalo dislide maka ukuran bisa lebih gede
+                //animasi saat di-slide
                 return TweenAnimationBuilder(
                   duration: const Duration(milliseconds: 350),
                   tween: Tween(begin: _scale, end: _scale),
@@ -112,13 +113,13 @@ class Indicator extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AnimatedContainer(
+    return AnimatedContainer( //animasi saat dipindah ke slide yang lain
       duration: const Duration(milliseconds: 350),
-      margin: const EdgeInsets.symmetric(horizontal: 4.0),
-      width: isActive ? 22.0 : 8.0,
+      margin: const EdgeInsets.symmetric(horizontal: 4.0), //bentuk slider horizontal
+      width: isActive ? 22.0 : 8.0, //jika slide aktif, maka ukuran slider akan lebih gede (animasi)
       height: 8.0,
       decoration: BoxDecoration(
-        color: isActive ? Colors.orange : Colors.grey,
+        color: isActive ? Colors.orange : Colors.grey, //jika slider aktif, maka warna akan berubah menjadi orange, selain itu abu-abu
         borderRadius: BorderRadius.circular(8.0)
       ),
     );

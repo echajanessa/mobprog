@@ -28,6 +28,7 @@ class NavigationExample extends StatefulWidget {
 class _NavigationExampleState extends State<NavigationExample> {
   int currentPageIndex = 0;
 
+  //Judul AppBar setiap pages
   List<String> appBarTitle = ["Stopwatch", "Timer", "About"];
 
   @override
